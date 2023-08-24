@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  client:
+    build: ./client
+    hostname: client
+
+  auth:
+    container_name: auth
+    image: mmmihaeel/node-auth-microservice:latest
+    build: ./auth-api
+    ports:
+      - "${AUTH_API_PORT}:${AUTH_API_PORT}"
+    hostname: ${AUTH_API_HOST}
+    networks:
+      - app-network
+
+  users:
+    container_name: users
+    image: mmmihaeel/node-users-microservice:latest
+    build: ./users-api
+    ports:
+      - "${USERS_API_PORT}:${USERS_API_PORT}"
+    hostname: ${USERS_API_HOST}
+    networks:
+      - app-network
+
+  tasks:
+    container_name: tasks
+    image: mmmihaeel/node-tasks-microservice:latest
+    build: ./tasks-api
+    ports:
+      - "${TASKS_API_PORT}:${TASKS_API_PORT}"
+    hostname: ${TASKS_API_HOST}
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,7 @@
+/auth-api/node_modules
+/users-api/node_modules
+/tasks-api/node_modules
+/tasks-api/tasks
+/users-api/users.json
+/auth-api/tokens.json
+/client/node_modules

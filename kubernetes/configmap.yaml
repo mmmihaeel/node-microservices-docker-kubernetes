@@ -1,0 +1,19 @@
+#configmap.yaml
+apiVersion: v1
+data:
+  AUTH_API_HOST: auth
+  AUTH_API_PORT: "1777"
+  JWT_SECRET: sdeghfsdajhgtrsfdjkghnhnfkdsjghnafdl!@2334r5
+  DATA_FOLDER_TOKENS: tokens.json
+
+  USERS_API_HOST: users
+  USERS_API_PORT: "1778"
+  DATA_FOLDER_USERS: users.json
+  AUTH_API_URL: http://auth:1777
+
+  TASKS_API_HOST: tasks
+  TASKS_API_PORT: "1779"
+  TASKS_FOLDER: tasks
+metadata:
+  name: microservices-config
+  namespace: default

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+        - name: users
+          image: mmmihaeel/node-users-microservice:latest
+          resources:
+            limits:
+              memory: 1512Mi
+              cpu: "12"
+            requests:
+              memory: 1256Mi
+              cpu: "0.5"
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: microservices-config
+                optional: true
+          ports:
+            - containerPort: 1778
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 20
+      imagePullSecrets:
+        - name: dockerhub-credentials
