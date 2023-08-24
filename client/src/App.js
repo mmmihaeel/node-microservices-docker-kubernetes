@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import jsCookie from 'js-cookie'
 import './App.css';
 import TaskList from './components/TaskList';
 import NewTask from './components/NewTask';
@@ -7,7 +6,6 @@ import NewTask from './components/NewTask';
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const token = jsCookie.get('token');
 
   const fetchTasks = useCallback(function () {
     fetch('/api/tasks', {
@@ -19,7 +17,11 @@ function App() {
         return response.json();
       })
       .then(function (jsonData) {
-        setTasks(jsonData.tasks);
+        setTasks(jsonData?.tasks || []);
+      })
+      .catch(err => {
+        console.error(err)
+        setTasks([])
       });
   }, []);
 

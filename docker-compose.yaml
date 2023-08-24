@@ -2,7 +2,13 @@ version: "3.8"
 services:
   client:
     build: ./client
+    container_name: client
     hostname: client
+    image: mmmihaeel/node-client-microservice:latest
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    networks:
+      - app-network
 
   auth:
     container_name: auth
