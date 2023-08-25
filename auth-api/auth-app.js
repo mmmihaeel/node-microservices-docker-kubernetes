@@ -17,6 +17,18 @@ const JWT_SECRET = process.env.JWT_SECRET.toString() || uuid.v4();
 const DATA_JSON = path.join(__dirname, process?.env?.DATA_FOLDER_TOKENS?.toString() || 'tokens.json');
 const PORT = Number(process.env?.AUTH_API_PORT) || 1777;
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", req.get('origin') || "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.chunkedEncoding = true;
+    return res.send({ server: "Auth" });
+  }
+  next();
+});
+
 app.get("/verify-token/:token/:userId", (req, res) => {
   const token = req.params.token;
   const userId = req.params.userId;

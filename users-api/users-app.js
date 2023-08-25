@@ -19,6 +19,11 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", req.get('origin') || "*");
   res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
+  if (req.method === 'OPTIONS') {
+    res.statusCode = 204;
+    res.chunkedEncoding = true;
+    return res.send({ server: "Users" });
+  }
   next();
 });
 
