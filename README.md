@@ -74,6 +74,7 @@ Replace LoadBalancer with the appropriate service type for your environment.
 
 ### Directory Structure
 
+```sh
 node-microservices-docker-kubernetes/
 ├── users/
 │ ├── Dockerfile
@@ -99,6 +100,7 @@ node-microservices-docker-kubernetes/
 │ ├── client-deployment.yaml
 ├── docker-compose.yml
 └── README.md
+```
 
 ### Contributing
 
