@@ -76,29 +76,38 @@ Replace LoadBalancer with the appropriate service type for your environment.
 
 ```sh
 node-microservices-docker-kubernetes/
-├── users/
+├── users-api/
 │ ├── Dockerfile
-│ ├── src/
+│ ├── .env.dev # Users microservice development environment
+│ ├── .env.prod # Users microservice production environment
+│ ├── users-app.js
 │ │ └── ... # Users microservice source files
-├── tasks/
+├── tasks-api/
 │ ├── Dockerfile
-│ ├── src/
+│ ├── .env.dev # Tasks microservice development environment
+│ ├── .env.prod # Tasks microservice production environment
+│ ├── tasks-app.js
 │ │ └── ... # Tasks microservice source files
-├── auth/
+├── auth-api/
 │ ├── Dockerfile
-│ ├── src/
+│ ├── .env.dev # Auth microservice development environment
+│ ├── .env.prod # Auth microservice production environment
+│ ├── auth-app.js
 │ │ └── ... # Auth microservice source files
 ├── client/
 │ ├── Dockerfile
 │ ├── public/
+│ ├── conf/ # Nginx production config for React client
 │ ├── src/
 │ │ └── ... # React client source files
 ├── kubernetes/
 │ ├── users-deployment.yaml
 │ ├── tasks-deployment.yaml
 │ ├── auth-deployment.yaml
+│ ├── configmap.yaml # kuberenetes env
 │ ├── client-deployment.yaml
 ├── docker-compose.yml
+├── .env # docker env
 └── README.md
 ```
 
