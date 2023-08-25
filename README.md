@@ -27,11 +27,11 @@ This repository contains a set of microservices implemented in Node.js, along wi
 
    ```sh
 
-   $ git clone https://github.com/mmmihaeel/node-microservices-docker-kubernetes.git
-   $ cd node-microservices-docker-kubernetes
-   $ cd users-api
-   $ npm install
-    $ cd ../tasks-ap
+   git clone https://github.com/mmmihaeel/node-microservices-docker-kubernetes.git
+   cd node-microservices-docker-kubernetes
+   cd users-api
+   npm install
+   cd ../tasks-ap
    npm install
    cd ../auth-api
    npm install
@@ -40,13 +40,18 @@ This repository contains a set of microservices implemented in Node.js, along wi
 
    ```
 
-   ```sh
-   docker-compose build
+2. Run with docker:
    Start the microservices and client using Docker Compose:
+
+   ```sh
+
+   docker-compose build
    docker-compose up
+
    ```
 
-Kubernetes
+### Kubernetes
+
 Apply Kubernetes configurations for each microservice and the client:
 
 ```sh
@@ -67,13 +72,36 @@ kubectl expose deployment client-deployment --type=LoadBalancer --port=80
 
 Replace LoadBalancer with the appropriate service type for your environment.
 
-Directory Structure
-users-api/: Users microservice
-tasks-api/: Tasks microservice
-auth-api/: Auth microservice
-client/: React client
-kubernetes/: Kubernetes configuration files
-Contributing
+### Directory Structure
+
+node-microservices-docker-kubernetes/
+├── users/
+│ ├── Dockerfile
+│ ├── src/
+│ │ └── ... # Users microservice source files
+├── tasks/
+│ ├── Dockerfile
+│ ├── src/
+│ │ └── ... # Tasks microservice source files
+├── auth/
+│ ├── Dockerfile
+│ ├── src/
+│ │ └── ... # Auth microservice source files
+├── client/
+│ ├── Dockerfile
+│ ├── public/
+│ ├── src/
+│ │ └── ... # React client source files
+├── kubernetes/
+│ ├── users-deployment.yaml
+│ ├── tasks-deployment.yaml
+│ ├── auth-deployment.yaml
+│ ├── client-deployment.yaml
+├── docker-compose.yml
+└── README.md
+
+### Contributing
+
 Contributions are welcome! Please follow the standard GitHub fork and pull request workflow.
 
 ## License
