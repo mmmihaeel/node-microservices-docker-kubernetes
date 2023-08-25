@@ -83,8 +83,17 @@ function Main() {
             });
     }
 
+    function logoutHandler() {
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        navigate('/login');
+    }
+
     return (
         <div className='App'>
+            <header>
+                <button onClick={logoutHandler}>Logout</button>
+            </header>
             <section>
                 <NewTask onAddTask={addTaskHandler} />
             </section>

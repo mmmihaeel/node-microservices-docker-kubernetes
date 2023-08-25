@@ -6,3 +6,10 @@ section {
   background-color: white;
   border-radius: 15px;
 }
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}

@@ -45,7 +45,7 @@ app.get("/verify-token/:token/:userId", (req, res) => {
 
   const rawData = fs.readFileSync(DATA_JSON);
   const loadedData = JSON.parse(rawData);
-  const tokenData = loadedData.find((token) => token.userId == userId);
+  const tokenData = loadedData.find((token) => (token.userId == req.params.userId && token.token === req.params.token));
   if (!tokenData) {
     return res.status(404).json({ message: "Token not found!" });
   }

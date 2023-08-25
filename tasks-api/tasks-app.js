@@ -59,7 +59,7 @@ app.get("/:userId/tasks", async (req, res) => {
         .json({ message: "Token and userId need to be specified!" });
     }
 
-    fs.readdir(TASKS_FOLDER, (err, files) => {
+    fs.readdir(path.join(TASKS_FOLDER), (err, files) => {
       if (err) {
         return res
           .status(500)

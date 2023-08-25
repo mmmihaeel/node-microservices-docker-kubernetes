@@ -61,7 +61,7 @@ function LoginForm() {
                 }),
             })
                 .then(async function (response) {
-                    if (response.status !== 201) {
+                    if (response.status !== 200) {
                         const message = await response.json();
                         throw new Error(message.message)
                     }
